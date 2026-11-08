@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HelpDesk</title>
+  </head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>HelpDesk</h1>
+      <button class="btn btn-primary" id="add-ticket">Добавить тикет</button>
+    </div>
+    <div class="loader hidden" id="loader"></div>
+    <ul class="tickets" id="tickets"></ul>
+  </div>
+
+  <div class="modal hidden" id="modal-form">
+    <div class="modal-content">
+      <h2 id="form-title">Добавить тикет</h2>
+      <form id="ticket-form">
+        <label>
+          Краткое описание
+          <input name="name" type="text" required />
+        </label>
+        <label>
+          Подробное описание
+          <textarea name="description" rows="4"></textarea>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="status" />
+          Выполнено
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Ок</button>
+          <button type="button" class="btn" data-close>Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="modal-confirm">
+    <div class="modal-content">
+      <h2>Удалить тикет?</h2>
+      <p>Это действие нельзя отменить.</p>
+      <div class="modal-actions">
+        <button class="btn btn-danger" id="confirm-delete">Удалить</button>
+        <button class="btn" data-close>Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="modal-view">
+    <div class="modal-content">
+      <h2 id="view-name"></h2>
+      <p class="muted" id="view-created"></p>
+      <p id="view-description"></p>
+      <div class="modal-actions">
+        <button class="btn" data-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
