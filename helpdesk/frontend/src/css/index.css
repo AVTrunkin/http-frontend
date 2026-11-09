@@ -167,3 +167,8 @@ body {
   font-size: 13px;
   margin-bottom: 8px;
 }
+
+.ticket-name.done {
+  text-decoration: line-through;
+  color: #999;
+}

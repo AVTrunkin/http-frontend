@@ -7,39 +7,40 @@
     <title>HelpDesk</title>
   </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>HelpDesk</h1>
-      <button class="btn btn-primary" id="add-ticket">Добавить тикет</button>
+  <div id="root">
+    <div class="container">
+      <div class="header">
+        <h1>HelpDesk</h1>
+        <button class="btn btn-primary" id="add-ticket">Добавить тикет</button>
+      </div>
+      <div class="loader hidden" id="loader"></div>
+      <ul class="tickets" id="tickets"></ul>
     </div>
-    <div class="loader hidden" id="loader"></div>
-    <ul class="tickets" id="tickets"></ul>
-  </div>
 
-  <div class="modal hidden" id="modal-form">
-    <div class="modal-content">
-      <h2 id="form-title">Добавить тикет</h2>
-      <form id="ticket-form">
-        <label>
-          Краткое описание
-          <input name="name" type="text" required />
-        </label>
-        <label>
-          Подробное описание
-          <textarea name="description" rows="4"></textarea>
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" name="status" />
-          Выполнено
-        </label>
-        <div class="modal-actions">
-          <button type="submit" class="btn btn-primary">Ок</button>
-          <button type="button" class="btn" data-close>Отмена</button>
-        </div>
-      </form>
+    <div class="modal hidden" id="modal-form">
+      <div class="modal-content">
+        <h2 id="form-title">Добавить тикет</h2>
+        <form id="ticket-form">
+          <label>
+            Краткое описание
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            Подробное описание
+            <textarea name="description" rows="4"></textarea>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="status" />
+            Выполнено
+          </label>
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-primary">Ок</button>
+            <button type="button" class="btn" data-close>Отмена</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
   <div class="modal hidden" id="modal-confirm">
     <div class="modal-content">
       <h2>Удалить тикет?</h2>

@@ -1,14 +1,17 @@
 /**
  *  Основной класс приложения
  * */
+
 import Ticket from './Ticket';
 import TicketService from './TicketService';
 import TicketView from './TicketView';
 import TicketForm from './TicketForm';
 
+
 export default class HelpDesk {
-  constructor(container) {
-    this.service = new TicketService();
+  constructor(container, service = new TicketService()) {
+    this.container = container;
+    this.service = service;
     this.loader = document.getElementById('loader');
     this.confirmModal = document.getElementById('modal-confirm');
     this.viewModal = document.getElementById('modal-view');
@@ -20,7 +23,11 @@ export default class HelpDesk {
       onView: (id) => this.showTicket(id),
     });
 
-    this.form = new TicketForm(document.getElementById('modal-form'), (data) => this.saveTicket(data));
+    this.form = new TicketForm(
+      document.getElementById('modal-form'),
+      (data) => this.saveTicket(data),
+      () => { this.editingId = null; },
+    );
 
     document.getElementById('add-ticket').addEventListener('click', () => this.form.open());
     document.getElementById('confirm-delete').addEventListener('click', () => this.confirmDelete());

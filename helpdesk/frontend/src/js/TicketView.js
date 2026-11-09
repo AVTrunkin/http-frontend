@@ -25,7 +25,7 @@ export default class TicketView {
     checkbox.checked = ticket.status;
 
     const name = document.createElement('span');
-    name.className = 'ticket-name';
+    name.className = `ticket-name${ticket.status ? ' done' : ''}`;
     name.textContent = ticket.name;
 
     const created = document.createElement('span');
@@ -49,6 +49,7 @@ export default class TicketView {
     li.addEventListener('click', (event) => {
       // Чекбокс — отметка о выполнении
       if (event.target.classList.contains('ticket-status')) {
+        name.classList.toggle('done', event.target.checked);
         this.callbacks.onStatusChange(ticket.id, event.target.checked);
         return;
       }

@@ -1,12 +1,10 @@
-/**
- *  Класс для создания формы создания нового тикета
- * */
 export default class TicketForm {
- constructor(modal, onSubmit) {
+  constructor(modal, onSubmit, onClose = null) {
     this.modal = modal;
     this.form = modal.querySelector('#ticket-form');
     this.title = modal.querySelector('#form-title');
     this.onSubmit = onSubmit;
+    this.onClose = onClose;
 
     this.form.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -19,8 +17,10 @@ export default class TicketForm {
       this.close();
     });
 
-    modal.addEventListener('click', (event) => {
-      if (event.target.hasAttribute('data-close') || event.target === modal) this.close();
+    this.modal.addEventListener('click', (event) => {
+      if (event.target.hasAttribute('data-close') || event.target === this.modal) {
+        this.close();
+      }
     });
   }
 
@@ -38,5 +38,6 @@ export default class TicketForm {
 
   close() {
     this.modal.classList.add('hidden');
+    if (this.onClose) this.onClose();
   }
 }
